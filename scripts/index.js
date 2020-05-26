@@ -8,13 +8,18 @@ import { CommunityGuilds, Guilds } from './components/Guilds'
 
 const BLOBS_ENDPOINT = 'https://api.mousey.app/v3/emoji/blobs+community-blobs'
 
-function calculateEmojiCount(data) {
+function calculateEmojiCount(data) 
+{
   let count = 0
 
   // Using nested `for` loops here instead of `Array.prototype.reduce` for
   // the sake of readability.
-  for (const guilds of Object.values(data)) {
-    for (const guild of Object.values(guilds)) {
+  for (const guilds of Object.values(data)) 
+  
+  {
+    for (const guild of Object.values(guilds)) 
+    {
+      
       count += guild.emoji.length
     }
   }
@@ -22,13 +27,15 @@ function calculateEmojiCount(data) {
   return count
 }
 
-function updatePageState(data) {
+function updatePageState(data) 
+{
   const count = calculateEmojiCount(data)
   const formattedCount = new Intl.NumberFormat().format(count)
   document.querySelector('#emoji-count').textContent = formattedCount
 }
 
-function mount(data) {
+function mount(data)
+{
   const emojis = new Emojis(data)
 
   log('Emojis:', emojis)
